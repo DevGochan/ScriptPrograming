@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Javascript Test</h1>
+        <div id = "test"></div>
+        <script>
+            function random(min, max) {
+                return Math.floor(Math.random() * (max - min) + 1) + min;
+            }
+
+            const test = document.getElementById('test');
+            const n = random(3, 145);
+            const arr = [];
+            let total = 0;
+            
+            for(let i = 0; i < 5; i++) {
+                arr[i] = random(3, 145);
+                total += arr[i];
+            }
+
+            const value = maxValue(arr);
+            const inc = (x) => x + 3;
+            const arr2 = arr.map(inc);
+            arr.forEach(inc);
+
+            let output = `<h3>${arr.toString()}</h3>`;
+            output += `<h4>Total = ${total}</h4>`;
+            output += `<h4>maxValue = ${value}</h4>`;
+            output += `<h3>${arr2.toString()}</h3>`;
+            test.innerHTML = output;
+
+            function maxValue(arr) {
+                let x = arr[0];
+                for(let i = 1; i < arr.length; i++)
+                    if(x < arr[i]) x = arr[i];
+
+                return x;
+            }
+
+        </script>
+    </body>
+    
+</html>
