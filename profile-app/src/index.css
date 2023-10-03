@@ -1,0 +1,5 @@
+/* style주는 방법 세 번째. 외부 css */
+.profile {
+  background-color: steelblue;
+  font-style: italic;
+}

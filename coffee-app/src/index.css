@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&family=Poppins:wght@200&display=swap");
+
+* {
+  box-sizing: borde-box;
+}
+
+body {
+  margin: 30px;
+  font-family: "Black Han Sans", sans-serif;
+  font-family: "Nanum Pen Script", cursive;
+  font-family: "Poppins", sans-serif;
+}
+
+td {
+  text-align: center;
+}
