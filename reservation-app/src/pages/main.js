@@ -1,13 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import List from '../components/List';
+import Reserve from '../components/Reserve';
+import Rstatus from '../components/Rstatus';
 
-function App() {
-  return {
-    
-    <List />
-    <Reserve />
-    <Rstatus />
-  }
+
+function Main() {
+  return (
+    <>
+      <Reserve />
+    </>
+  )
 }
 
-export default App;
+export default Main;
