@@ -61,17 +61,8 @@ const Reserve = () => {
       alert("중복된 예약자명입니다.");
     } else {
       // 모든 조건 ok, 데이터 변경 일어남
-      setDatas(
-        datas.filter((room) => {
-          if (room[0] != rname) {
-            return true;
-          } else {
-            setReservedRoom([...reservedRoom, [uname, rname, persons, uhours]]);
-            alert("예약이 완료되었습니다.");
-            return false;
-          }
-        })
-      );
+      setReservedRoom([...reservedRoom, [uname, rname, persons, uhours]]);
+      alert("예약이 완료되었습니다.");
     }
   };
 
