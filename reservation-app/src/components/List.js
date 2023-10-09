@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/main.css";
 
 const List = (props) => {
   const datas = props.roomDatas;

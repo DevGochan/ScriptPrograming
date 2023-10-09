@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import List from "./List";
 import Rstatus from "./Rstatus";
+import "../css/main.css";
 
 const Reserve = () => {
   const [uname, setUname] = useState("");
@@ -49,9 +50,13 @@ const Reserve = () => {
     if (reservedRoom.some((reservation) => reservation[1] == rname)) {
       alert("중복된 방번호입니다.");
     } else if (persons > maxPerson[rname]) {
-      alert(`인원을 확인해주세요. 선택하신 방의 최대 인원 제한은 ${maxPerson[rname]}명 입니다.`);
+      alert(
+        `인원을 확인해주세요. 선택하신 방의 최대 인원 제한은 ${maxPerson[rname]}명 입니다.`
+      );
     } else if (uhours > 12 || uhours <= 0) {
-      alert("이용시간을 확인해주세요. 최소 1시간부터 최대 12시간까지 가능합니다.");
+      alert(
+        "이용시간을 확인해주세요. 최소 1시간부터 최대 12시간까지 가능합니다."
+      );
     } else if (reservedRoom.some((reservation) => reservation[0] === uname)) {
       alert("중복된 예약자명입니다.");
     } else {
@@ -78,31 +83,32 @@ const Reserve = () => {
       <h2>미팅룸 예약</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          예약자 :{" "}
           <input
             type="text"
             name="uname"
+            placeholder="예약자"
+            autocomplete="off"
             value={uname}
             onChange={handleUnameChange}
           />
-          방번호 :{" "}
           <input
             type="number"
             name="rname"
+            placeholder="방번호"
             value={rname}
             onChange={handleRnameChange}
           />
-          인원 :{" "}
           <input
             type="number"
             name="persons"
+            placeholder="인원"
             value={persons}
             onChange={handlePersonsChange}
           />
-          이용시간 :{" "}
           <input
             type="number"
             name="uhours"
+            placeholder="이용시간"
             value={uhours}
             onChange={handleUhoursChange}
           />
