@@ -1,10 +1,7 @@
 import React from "react";
-import reseveData from "../data/reseveData";
 
 const List = (props) => {
   const datas = props.roomDatas;
-  console.log("datasdatasdatas", datas);
-
   const tableRows = [];
 
   datas.map((room) => {
