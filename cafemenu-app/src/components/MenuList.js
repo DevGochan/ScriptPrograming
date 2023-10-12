@@ -1,5 +1,10 @@
+import MenuItem from "./MenuItem";
+import MenuItem2 from "./MenuItem2";
+
 const MenuList = () => {
+  // menu data
   const menus = [
+    // local variable. 오브젝트의 배열
     { id: 1, name: "Ameicano", price: 4500 },
     { id: 2, name: "Espresso", price: 4100 },
     { id: 3, name: "Caffe Latte", price: 4800 },
@@ -8,12 +13,28 @@ const MenuList = () => {
     { id: 6, name: "White Mocca", price: 5000 },
     { id: 7, name: "Vanilla Latte", price: 5500 },
   ];
+
+  const rows = menus.map(
+    (menu) => <MenuItem key = {menu.id} id={menu.id} name={menu.name} price={menu.price} /> // 매개변수로 들어온 오브젝트의 id name price
+  );
+
   return (
-    <table>
-      <tr>
-        <td>menus[0]</td>
-      </tr>
-    </table>
+    <>
+      <table>
+        <thead>
+          <th>No</th>
+          <th>Menu Name</th>
+          <th>Price</th>
+        </thead>
+
+        <tbody>
+          {/* <MenuItem id = {menus[0].id} name = {menus[0].name} price = {menus[0].price}/>
+            <MenuItem id = {menus[1].id} name = {menus[1].name} price = {menus[1].price}/>
+            <MenuItem2 ment = {menus[2]}></MenuItem2> */}
+          {rows}
+        </tbody>
+      </table>
+    </>
   );
 };
 

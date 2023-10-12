@@ -1,18 +1,16 @@
-import './App.css';
-import React, {useState} from "react";
-import ReactDOM from "react-dom/client";
+import "./App.css";
+import React, { useState } from "react";
+import Heading from "./components/Heading";
+import MenuList from "./components/MenuList";
+import MenuAdd from "./components/MenuAdd";
 
 function App() {
-  const [color, setColor] = useState("red");
-
   return (
-   <>
-    <h1>my favorite color is {color}!</h1>
-    <button type = "button" onClick = {() => setColor("blue")}>Blue</button>
-    <button type = "button" onClick = {() => setColor("red")}>Red</button>
-    <button type = "button" onClick = {() => setColor("black")}>Black</button>
-    <button type = "button" onClick = {() => setColor("white")}>White</button>
-   </>
+    <>
+      <Heading/>
+      <MenuList/>
+      <MenuAdd/>
+    </>
   );
 }
 

@@ -70,7 +70,7 @@ const Reserve = () => {
     <>
       <h1>[ WeWork ] Office Sharing Service</h1> <hr />
       <h2>Meeting Rooms Reservation</h2>
-      <List title={"예약 가능한 미팅룸 리스트"} roomDatas={datas} />
+      <List title={"예약 가능한 미팅룸 리스트"} roomDatas={datas} inputDatas={reservedRoom}/>
       <h2>미팅룸 예약</h2>
       <form onSubmit={handleSubmit}>
         <label>
