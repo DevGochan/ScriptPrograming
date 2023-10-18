@@ -1,6 +1,7 @@
 const MenuItem2 = (props) => {
-const { id, name, price } = props;
-  
+const { id, name, price } = props.menu;
+
+
 // console.log("props ====", props)
 // console.log("id ====", id)
 
@@ -10,6 +11,7 @@ const { id, name, price } = props;
         <td>{id}</td>
         <td>{name}</td>
         <td>{price}</td>
+        <button onClick={props.delMenu(id)}>Delete</button>
       </tr>
     </>
   );
