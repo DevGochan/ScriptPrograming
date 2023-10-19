@@ -1,10 +1,9 @@
 const Heading = () => {
-  return (
-    <>
-      <h1>Cafe Menuboard</h1>
-      <hr></hr>
-    </>
-  );
-};
-
+    return (
+        <>
+            <h1>Cafe Menuboard</h1>
+            <hr/>
+        </>
+    )
+}
 export default Heading;
