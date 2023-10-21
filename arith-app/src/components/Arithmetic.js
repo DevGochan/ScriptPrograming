@@ -9,7 +9,7 @@ const oplist = ["+", "-", "*", "/"];
 function Arithmetic() {
   const op1 = random(10, 30); // 10 ~ 30 사이의 숫자
   const op2 = random(10, 30); // 10 ~ 30 사이의 숫자
-  const op = random(0, 3); // 0 ~ 3 사이의 숫자
+  const op = random(0, 3); // 0 ~ 3 사이의 랜덤 숫자. op가 결정됨
   let result = 0;
 
   // if문으로 연산자 종류에 따라 result 계산하고 return 안에다가 내보내기
@@ -22,7 +22,7 @@ function Arithmetic() {
   return (
     <>
       <h2>{output}</h2>
-      <Arithmetic2 op1={op1} op2={op2} />
+      <Arithmetic2 op1={op1} op2={op2} op={op} />
     </>
   );
 }

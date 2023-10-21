@@ -40,13 +40,7 @@ root.render(
       <li>BMI = {bmi.toFixed(2)}</li>
     </ul>
     <h3>Yor are {result}!!</h3>
-    {point > 100 ? (
-      <h3>High Point!</h3>
-    ) : point > 50 ? (
-      <h3>Middle Point!</h3>
-    ) : (
-      <h3>Low Point!</h3>
-    )}
+    {point > 100 ? (<h3>High Point!</h3>) : point > 50 ? (<h3>Middle Point!</h3>) : (<h3>Low Point!</h3>)}
     {/* 조건연산식 안에 조건연산식 사용 가능 */}
     {age > 20 && <h3>You are adult!! </h3>}{" "}
     {/* 일반적인 프로그래밍 언어들이 갖고있는 형태임. short circuit 특성을 이용한 구문 */}
