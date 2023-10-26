@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+
 class Counter extends React.Component {
   // state 변수 정의. 기본원칙은 생성자에 하는 것
   constructor(props) {
@@ -23,6 +24,7 @@ class Counter extends React.Component {
       number: state.number + parseInt(props.adder),
     }));
   }
+
   render() {
     return (
       <>

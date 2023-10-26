@@ -4,7 +4,7 @@ import MenuItem from "./MenuItem";
 import MenuItem2 from "./MenuItem2";
 const MenuList = () => {
   // 상태변수 정의
-  const [menus, setMenus] = useState([
+  const [menus, 변경을도와주는함수] = useState([
     { id: 1, name: "Ameicano", price: 4500, soldout: false },
     { id: 2, name: "Espresso", price: 4100, soldout: true },
     { id: 3, name: "Caffe Latte", price: 4800, soldout: false },
@@ -26,7 +26,7 @@ const MenuList = () => {
     ];*/
   const deleteMenu = (id) => {
     //alert('Deleting: ' + id);
-    setMenus([...menus.filter((menu) => menu.id != id)]);
+    변경을도와주는함수([...menus.filter((menu) => menu.id != id)]);
   };
 
   const rows = menus.map((menu) => (
@@ -34,7 +34,7 @@ const MenuList = () => {
       key={menu.id}
       menu={menu}
       delMenu={deleteMenu}
-      setMenus={setMenus}
+      setMenus={변경을도와주는함수}
     />
   ));
   return (
@@ -49,7 +49,7 @@ const MenuList = () => {
         <tbody>{rows}</tbody>
       </table>
       <hr />
-      <MenuForm menus={menus} setMenus={setMenus} />
+      <MenuForm menus={menus} setMenus={변경을도와주는함수} />
     </>
   );
 };
