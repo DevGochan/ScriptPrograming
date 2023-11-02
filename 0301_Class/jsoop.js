@@ -60,5 +60,5 @@ function myBook() {
 
 // const [title, price, pub] = myBook(); // 배열 반환이 가능함
 
-const [title, price, pub, rating, pubdate] = myBook(); // 비구조화
+const [title, price, pub, rating, pubdate] = myBook(); // 비구조화(함수의 리턴값을)
 test.innerHTML = `${title}, ${price}, ${pub}, ${rating}, ${pubdate}`; // 역 따옴표임.
