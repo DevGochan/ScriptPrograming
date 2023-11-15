@@ -1,0 +1,19 @@
+/* Profile.css */
+main {
+    display: flex;  /* 엘리먼트들을 수평으로 배치 */
+    align-items: center;
+    justify-content: center;
+}
+.info {
+    width: 50%;  /* main 가로 크기의 50% */
+    margin-top: 2em;
+}
+.info h1 {
+    font-size: 3em;
+}
+.info h3 {
+    font-size: 0.5em;
+}
+.photo img {
+    width: 200px;
+}

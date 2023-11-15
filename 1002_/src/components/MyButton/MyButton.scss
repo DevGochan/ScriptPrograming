@@ -1,0 +1,49 @@
+$blue: #1177ff; // scss는 변수를 쓸 수 있다.
+$green: #22ff33;
+$red: #ff3333;
+
+@mixin btn-color($color) {  // 함수를 정의
+  background: $color;
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
+
+.btn {
+  background-color: $blue;
+  color: white;
+  border-radius: 5px;
+  width: 200px;
+
+  &:hover {
+    // &는 .btn을 가리킴
+    background-color: darken($blue, 10%);
+    // darken은 sass의 함수. 더 진하게 만들어줌. lighten() 도 있음
+  }
+
+  &.large {
+    width: 300px;
+    height: 150px;
+  }
+
+  &.medium {
+    width: 200px;
+    height: 80px;
+  }
+
+  & + & {
+    margin-left: 15px;
+  }
+
+  &.blue {
+    @include btn-color($blue);
+  }
+
+  &.green {
+    @include btn-color($green);
+  }
+
+  &.red {
+    @include btn-color($red);
+  }
+}
