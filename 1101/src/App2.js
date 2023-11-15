@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams} from 'react-router-dom'; // as Router는 이름 줄여쓰는 것
+import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams, useRoutes} from 'react-router-dom'; // as Router는 이름 줄여쓰는 것
 import './App.css';
 
 const Home = () => {
@@ -90,7 +90,22 @@ const NoPage = () => {
   );
 }
 
-function App() {
+function MyRotes() {
+    const elements = useRoutes([ // Route에 들어가는 내용을 적으면 된다.
+        {path: '/', element: <Home />},
+        {path: '/about', element: <About />},
+        {path: '/blog', element: <Blog />,
+            children: [
+                {index: true, element: <PostList />},
+                {path: ':postid', element: <Post />}
+            ]
+        },
+        {path: '*', element: <NoPage />}
+    ]);
+    return elements
+}
+
+function App2() {
   return (
     <Router>
       <nav style={{margin: 10}}>
@@ -98,19 +113,9 @@ function App() {
         <Link to='/about' style={{padding: 5}}>About</Link>
         <Link to='/blog' style={{padding: 5}}>Blog</Link>
       </nav>
-      <Routes>
-        <Route path='/' element={<Home />}/> 
-        <Route path='/about' element={<About />}/>
-        {/* 루트가 한 페이지라고 생각하면 되고 path는 URL의 주소, element는 path에 해당하는 컴포넌트 */}
-        <Route path='/blog' element={<Blog />}> 
-          <Route index element={<PostList />} />
-          <Route path=':postid' element={<Post/>} />
-        </Route>
-        <Route path='*' element={<NoPage />}/>
-        {/* 존재하지 않는 url 입력시 Nopage 컴포넌트로 처리 */}
-      </Routes>
+      <MyRotes />
     </Router>
   );
 }
 
-export default App;
+export default App2;
