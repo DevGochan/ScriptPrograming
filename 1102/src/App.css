@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+nav a { 
+  color: black;
+}
+
+nav a:hover {
+  color: crimson;
+}
+
+nav a.active {
+  color: navy;
+}

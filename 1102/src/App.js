@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams} from 'react-router-dom'; // as Router는 이름 줄여쓰는 것
+import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams, NavLink, useNavigate} from 'react-router-dom'; // as Router는 이름 줄여쓰는 것
 import './App.css';
+import { useState } from 'react';
 
 const Home = () => {
   return(
@@ -90,13 +91,65 @@ const NoPage = () => {
   );
 }
 
-function App() {
-  return (
-    <Router>
+const Login = ({ setUser }) => {
+  const [credit, setCredit] = useState({});
+  const x = useNavigate(); // 리액트 라우터 돔에 있는 후크임. location 을 change해주는 역할
+  const handleLogin = () => {
+    // admin 사용자인지 확인하기
+    if(credit.username === 'admin' && credit.password === '123') {
+      // alert('Admin is logged!!');
+      setUser({username: credit.username});
+      // 로그인 후 연결되는 페이지로 이동하기
+      x('/');
+    }
+  }
+  return(
+    <div style={{padding: 10}}>
+      <span>Username: </span><br/>
+      <input type = 'text' onChange={(e) => setCredit({...credit, username: e.target.value})}/><br/>
+      <span>Password: </span><br/>
+      <input type = 'password' onChange={(e) => setCredit({...credit, password: e.target.value})}/><br/>
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+}
+
+const Logout = ({ setUser, x }) => {
+  setUser(null); // user상태변수의 값을 삭제함
+  x('/'); // root로 다시 이동
+}
+
+const AdminPage = () => {
+  return(
+    <div style = {{padding: 20}}>
+      <h1>ADMIN page</h1>
+      <p>This is a ADMIN page view.</p>
+    </div>
+  );
+}
+
+const ProtectRoute = ({ user, children }) => {
+  if(!user) {
+    return (
+      <x to = {'/login'} replace /> 
+    );
+  }
+  return children;
+}
+
+const AppRouter = () => {
+  const [user, setUser] = useState();
+  const x = useNavigate();
+  return(
+    <>
       <nav style={{margin: 10}}>
-        <Link to='/' style={{padding: 5}}>Home</Link>
-        <Link to='/about' style={{padding: 5}}>About</Link>
-        <Link to='/blog' style={{padding: 5}}>Blog</Link>
+        <NavLink to='/' style={{padding: 5}}>Home</NavLink>
+        <NavLink to='/about' style={{padding: 5}}>About</NavLink>
+        <NavLink to='/blog' style={{padding: 5}}>Blog</NavLink>
+        {user && <NavLink to='/admin' style={{padding: 5}}>Admin</NavLink>}
+        <span> | </span>
+        {!user && <NavLink to='/login' style={{padding: 5}}>Login</NavLink>}
+        {user && <NavLink to='/logout' style={{padding: 5}}>Logout</NavLink>}
       </nav>
       <Routes>
         <Route path='/' element={<Home />}/> 
@@ -106,9 +159,20 @@ function App() {
           <Route index element={<PostList />} />
           <Route path=':postid' element={<Post/>} />
         </Route>
+        <Route path='/admin' element={<ProtectRoute user = {user}> <AdminPage/> </ProtectRoute>}/>
         <Route path='*' element={<NoPage />}/>
         {/* 존재하지 않는 url 입력시 Nopage 컴포넌트로 처리 */}
+        <Route path='/login' element={<Login setUser = {setUser}/>}/> 
+        <Route path='/logout' element={<Logout setUser = {setUser} x = {x} />}/> 
       </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppRouter></AppRouter>
     </Router>
   );
 }
